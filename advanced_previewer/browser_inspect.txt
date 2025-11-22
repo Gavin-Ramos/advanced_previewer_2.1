@@ -1,0 +1,638 @@
+browser attributes:
+AllowNestedDocks: DockOption.AllowNestedDocks
+AllowTabbedDocks: DockOption.AllowTabbedDocks
+AnimatedDocks: DockOption.AnimatedDocks
+DockOption: <enum 'DockOption'>
+DrawChildren: RenderFlag.DrawChildren
+DrawWindowBackground: RenderFlag.DrawWindowBackground
+ForceTabbedDocks: DockOption.ForceTabbedDocks
+GroupedDragging: DockOption.GroupedDragging
+IgnoreMask: RenderFlag.IgnoreMask
+PaintDeviceMetric: <enum 'PaintDeviceMetric'>
+PdmDepth: PaintDeviceMetric.PdmDepth
+PdmDevicePixelRatio: PaintDeviceMetric.PdmDevicePixelRatio
+PdmDevicePixelRatioScaled: PaintDeviceMetric.PdmDevicePixelRatioScaled
+PdmDpiX: PaintDeviceMetric.PdmDpiX
+PdmDpiY: PaintDeviceMetric.PdmDpiY
+PdmHeight: PaintDeviceMetric.PdmHeight
+PdmHeightMM: PaintDeviceMetric.PdmHeightMM
+PdmNumColors: PaintDeviceMetric.PdmNumColors
+PdmPhysicalDpiX: PaintDeviceMetric.PdmPhysicalDpiX
+PdmPhysicalDpiY: PaintDeviceMetric.PdmPhysicalDpiY
+PdmWidth: PaintDeviceMetric.PdmWidth
+PdmWidthMM: PaintDeviceMetric.PdmWidthMM
+RenderFlag: <enum 'RenderFlag'>
+VerticalTabs: DockOption.VerticalTabs
+__annotations__: {'mw': 'AnkiQt', 'col': 'Collection', 'editor': 'Editor | None', 'table': 'Table'}
+__class__: <class 'aqt.browser.browser.Browser'>
+__delattr__: <method-wrapper '__delattr__' of Browser object at 0x148091dc0>
+__dict__: {'mw': <aqt.main.AnkiQt object at 0x10e2c8310>, 'col': <anki.collection.Collection object at 0x127232880>, 'lastFilter': '', 'focusTo': None, '_previewer': None, '_card_info': <aqt.browser.card_info.BrowserCardInfo object at 0x149bc8100>, '_closeEventHasCleanedUp': False, 'auto_layout': True, 'aspect_ratio': 0.0, 'form': <_aqt.forms.browser_qt6.Ui_Dialog object at 0x149bc80d0>, 'card': None, 'current_card': None, 'sidebarDockWidget': <PyQt6.QtWidgets.QDockWidget object at 0x149bc3c10>, 'sidebar': <aqt.browser.sidebar.tree.SidebarTreeView object at 0x149bc3ca0>, 'sidebarTree': <aqt.browser.sidebar.tree.SidebarTreeView object at 0x149bc3ca0>, 'table': <aqt.browser.table.table.Table object at 0x14812d0a0>, '_switch': <aqt.switch.Switch object at 0x14812a790>, 'pgUpCut': <PyQt6.QtGui.QShortcut object at 0x32a14f160>, 'pgDownCut': <PyQt6.QtGui.QShortcut object at 0x32a14f1f0>, 'editor': <aqt.editor.Editor object at 0x32a14d820>, 'amboss_qbank_button': <1044112126.qbank.ui_browser.QBankButton object at 0x32a14fd30>}
+__dir__: <built-in method __dir__ of Browser object at 0x148091dc0>
+__doc__: None
+__eq__: <method-wrapper '__eq__' of Browser object at 0x148091dc0>
+__format__: <built-in method __format__ of Browser object at 0x148091dc0>
+__ge__: <method-wrapper '__ge__' of Browser object at 0x148091dc0>
+__getattr__: <built-in method __getattr__ of Browser object at 0x148091dc0>
+__getattribute__: <method-wrapper '__getattribute__' of Browser object at 0x148091dc0>
+__gt__: <method-wrapper '__gt__' of Browser object at 0x148091dc0>
+__hash__: <method-wrapper '__hash__' of Browser object at 0x148091dc0>
+__init__: <bound method Browser.__init__ of <aqt.browser.browser.Browser object at 0x148091dc0>>
+__init_subclass__: <built-in method __init_subclass__ of PyQt6.sip.wrappertype object at 0x10d7e6010>
+__le__: <method-wrapper '__le__' of Browser object at 0x148091dc0>
+__lt__: <method-wrapper '__lt__' of Browser object at 0x148091dc0>
+__module__: aqt.browser.browser
+__ne__: <method-wrapper '__ne__' of Browser object at 0x148091dc0>
+__new__: <built-in method __new__ of PyQt6.sip.wrappertype object at 0x106848878>
+__reduce__: <built-in method __reduce__ of Browser object at 0x148091dc0>
+__reduce_ex__: <built-in method __reduce_ex__ of Browser object at 0x148091dc0>
+__repr__: <method-wrapper '__repr__' of Browser object at 0x148091dc0>
+__setattr__: <method-wrapper '__setattr__' of Browser object at 0x148091dc0>
+__sizeof__: <built-in method __sizeof__ of Browser object at 0x148091dc0>
+__str__: <method-wrapper '__str__' of Browser object at 0x148091dc0>
+__subclasshook__: <built-in method __subclasshook__ of PyQt6.sip.wrappertype object at 0x10d7e6010>
+__weakref__: <weakref at 0x149a91b30; to 'Browser' at 0x148091dc0>
+_card_info: <aqt.browser.card_info.BrowserCardInfo object at 0x149bc8100>
+_cleanup_preview: <bound method Browser._cleanup_preview of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_closeEventHasCleanedUp: False
+_closeWindow: <bound method Browser._closeWindow of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_default_search: <bound method Browser._default_search of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_editor_web_view: <bound method Browser._editor_web_view of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_line_edit: <bound method Browser._line_edit of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_on_export_notes: <bound method Browser._on_export_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_on_preview_closed: <bound method Browser._on_preview_closed of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_on_temporary_close: <bound method Browser._on_temporary_close of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_previewer: None
+_prompt_for_tags: <bound method Browser._prompt_for_tags of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_renderPreview: <bound method Browser._renderPreview of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_switch: <aqt.switch.Switch object at 0x14812a790>
+_update_card_info: <bound method Browser._update_card_info of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_update_current_actions: <bound method Browser._update_current_actions of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_update_flag_labels: <bound method Browser._update_flag_labels of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_update_flags_menu: <bound method Browser._update_flags_menu of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_update_row_actions: <bound method Browser._update_row_actions of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_update_selection_actions: <bound method Browser._update_selection_actions of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_update_toggle_bury_action: <bound method Browser._update_toggle_bury_action of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_update_toggle_mark_action: <bound method Browser._update_toggle_mark_action of <aqt.browser.browser.Browser object at 0x148091dc0>>
+_update_toggle_suspend_action: <bound method Browser._update_toggle_suspend_action of <aqt.browser.browser.Browser object at 0x148091dc0>>
+acceptDrops: <built-in method acceptDrops of Browser object at 0x148091dc0>
+accessibleDescription: <built-in method accessibleDescription of Browser object at 0x148091dc0>
+accessibleName: <built-in method accessibleName of Browser object at 0x148091dc0>
+actionEvent: <built-in method actionEvent of Browser object at 0x148091dc0>
+actions: <built-in method actions of Browser object at 0x148091dc0>
+activateWindow: <built-in method activateWindow of Browser object at 0x148091dc0>
+addAction: <built-in method addAction of Browser object at 0x148091dc0>
+addActions: <built-in method addActions of Browser object at 0x148091dc0>
+addDockWidget: <built-in method addDockWidget of Browser object at 0x148091dc0>
+addTags: <bound method Browser.add_tags_to_selected_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+addToolBar: <built-in method addToolBar of Browser object at 0x148091dc0>
+addToolBarBreak: <built-in method addToolBarBreak of Browser object at 0x148091dc0>
+add_card: <bound method Browser.add_card of <aqt.browser.browser.Browser object at 0x148091dc0>>
+add_tags_to_selected_notes: <bound method Browser.add_tags_to_selected_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+adjustSize: <built-in method adjustSize of Browser object at 0x148091dc0>
+amboss_qbank_button: <1044112126.qbank.ui_browser.QBankButton object at 0x32a14fd30>
+aspect_ratio: 0.0
+autoFillBackground: <built-in method autoFillBackground of Browser object at 0x148091dc0>
+auto_layout: True
+backgroundRole: <built-in method backgroundRole of Browser object at 0x148091dc0>
+baseSize: <built-in method baseSize of Browser object at 0x148091dc0>
+begin_reset: <bound method Browser.begin_reset of <aqt.browser.browser.Browser object at 0x148091dc0>>
+blockSignals: <built-in method blockSignals of Browser object at 0x148091dc0>
+bury_selected_cards: <bound method Browser.bury_selected_cards of <aqt.browser.browser.Browser object at 0x148091dc0>>
+card: None
+centralWidget: <built-in method centralWidget of Browser object at 0x148091dc0>
+changeEvent: <built-in method changeEvent of Browser object at 0x148091dc0>
+childAt: <built-in method childAt of Browser object at 0x148091dc0>
+childEvent: <built-in method childEvent of Browser object at 0x148091dc0>
+children: <built-in method children of Browser object at 0x148091dc0>
+childrenRect: <built-in method childrenRect of Browser object at 0x148091dc0>
+childrenRegion: <built-in method childrenRegion of Browser object at 0x148091dc0>
+clearFocus: <built-in method clearFocus of Browser object at 0x148091dc0>
+clearMask: <built-in method clearMask of Browser object at 0x148091dc0>
+clearUnusedTags: <bound method Browser.clear_unused_tags of <aqt.browser.browser.Browser object at 0x148091dc0>>
+clear_unused_tags: <bound method Browser.clear_unused_tags of <aqt.browser.browser.Browser object at 0x148091dc0>>
+close: <built-in method close of Browser object at 0x148091dc0>
+closeEvent: <bound method Browser.closeEvent of <aqt.browser.browser.Browser object at 0x148091dc0>>
+closeWithCallback: <bound method Browser.closeWithCallback of <aqt.browser.browser.Browser object at 0x148091dc0>>
+col: <anki.collection.Collection object at 0x127232880>
+colorCount: <built-in method colorCount of Browser object at 0x148091dc0>
+connectNotify: <built-in method connectNotify of Browser object at 0x148091dc0>
+contentsMargins: <built-in method contentsMargins of Browser object at 0x148091dc0>
+contentsRect: <built-in method contentsRect of Browser object at 0x148091dc0>
+contextMenuEvent: <built-in method contextMenuEvent of Browser object at 0x148091dc0>
+contextMenuPolicy: <built-in method contextMenuPolicy of Browser object at 0x148091dc0>
+corner: <built-in method corner of Browser object at 0x148091dc0>
+create: <built-in method create of Browser object at 0x148091dc0>
+createFilteredDeck: <bound method Browser.createFilteredDeck of <aqt.browser.browser.Browser object at 0x148091dc0>>
+createPopupMenu: <built-in method createPopupMenu of Browser object at 0x148091dc0>
+createWindowContainer: <built-in method createWindowContainer of Browser object at 0x148091dc0>
+current_card: None
+current_search: <bound method Browser.current_search of <aqt.browser.browser.Browser object at 0x148091dc0>>
+cursor: <built-in method cursor of Browser object at 0x148091dc0>
+customContextMenuRequested: <bound PYQT_SIGNAL customContextMenuRequested of Browser object at 0x148091dc0>
+customEvent: <built-in method customEvent of Browser object at 0x148091dc0>
+deleteLater: <built-in method deleteLater of Browser object at 0x148091dc0>
+deleteNotes: <bound method Browser.delete_selected_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+deleteTags: <bound method Browser.remove_tags_from_selected_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+delete_selected_notes: <bound method Browser.delete_selected_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+depth: <built-in method depth of Browser object at 0x148091dc0>
+destroy: <built-in method destroy of Browser object at 0x148091dc0>
+destroyed: <bound PYQT_SIGNAL destroyed of Browser object at 0x148091dc0>
+devType: <built-in method devType of Browser object at 0x148091dc0>
+devicePixelRatio: <built-in method devicePixelRatio of Browser object at 0x148091dc0>
+devicePixelRatioF: <built-in method devicePixelRatioF of Browser object at 0x148091dc0>
+devicePixelRatioFScale: <built-in method devicePixelRatioFScale of Browser object at 0x148091dc0>
+disconnect: <built-in method disconnect of Browser object at 0x148091dc0>
+disconnectNotify: <built-in method disconnectNotify of Browser object at 0x148091dc0>
+dockOptions: <built-in method dockOptions of Browser object at 0x148091dc0>
+dockWidgetArea: <built-in method dockWidgetArea of Browser object at 0x148091dc0>
+documentMode: <built-in method documentMode of Browser object at 0x148091dc0>
+dragEnterEvent: <built-in method dragEnterEvent of Browser object at 0x148091dc0>
+dragLeaveEvent: <built-in method dragLeaveEvent of Browser object at 0x148091dc0>
+dragMoveEvent: <built-in method dragMoveEvent of Browser object at 0x148091dc0>
+dropEvent: <built-in method dropEvent of Browser object at 0x148091dc0>
+dumpObjectInfo: <built-in method dumpObjectInfo of Browser object at 0x148091dc0>
+dumpObjectTree: <built-in method dumpObjectTree of Browser object at 0x148091dc0>
+dynamicPropertyNames: <built-in method dynamicPropertyNames of Browser object at 0x148091dc0>
+editor: <aqt.editor.Editor object at 0x32a14d820>
+effectiveWinId: <built-in method effectiveWinId of Browser object at 0x148091dc0>
+end_reset: <bound method Browser.end_reset of <aqt.browser.browser.Browser object at 0x148091dc0>>
+ensurePolished: <built-in method ensurePolished of Browser object at 0x148091dc0>
+enterEvent: <built-in method enterEvent of Browser object at 0x148091dc0>
+event: <built-in method event of Browser object at 0x148091dc0>
+eventFilter: <built-in method eventFilter of Browser object at 0x148091dc0>
+find: <built-in method find of Browser object at 0x148091dc0>
+findChild: <built-in method findChild of Browser object at 0x148091dc0>
+findChildren: <built-in method findChildren of Browser object at 0x148091dc0>
+focusInEvent: <built-in method focusInEvent of Browser object at 0x148091dc0>
+focusNextChild: <built-in method focusNextChild of Browser object at 0x148091dc0>
+focusNextPrevChild: <built-in method focusNextPrevChild of Browser object at 0x148091dc0>
+focusOutEvent: <built-in method focusOutEvent of Browser object at 0x148091dc0>
+focusPolicy: <built-in method focusPolicy of Browser object at 0x148091dc0>
+focusPreviousChild: <built-in method focusPreviousChild of Browser object at 0x148091dc0>
+focusProxy: <built-in method focusProxy of Browser object at 0x148091dc0>
+focusSidebar: <bound method Browser.focusSidebar of <aqt.browser.browser.Browser object at 0x148091dc0>>
+focusSidebarSearchBar: <bound method Browser.focusSidebarSearchBar of <aqt.browser.browser.Browser object at 0x148091dc0>>
+focusTo: None
+focusWidget: <built-in method focusWidget of Browser object at 0x148091dc0>
+font: <built-in method font of Browser object at 0x148091dc0>
+fontInfo: <built-in method fontInfo of Browser object at 0x148091dc0>
+fontMetrics: <built-in method fontMetrics of Browser object at 0x148091dc0>
+foregroundRole: <built-in method foregroundRole of Browser object at 0x148091dc0>
+forget_cards: <bound method Browser.forget_cards of <aqt.browser.browser.Browser object at 0x148091dc0>>
+form: <_aqt.forms.browser_qt6.Ui_Dialog object at 0x149bc80d0>
+frameGeometry: <built-in method frameGeometry of Browser object at 0x148091dc0>
+frameSize: <built-in method frameSize of Browser object at 0x148091dc0>
+geometry: <built-in method geometry of Browser object at 0x148091dc0>
+get_active_note_type_id: <bound method Browser.get_active_note_type_id of <aqt.browser.browser.Browser object at 0x148091dc0>>
+grab: <built-in method grab of Browser object at 0x148091dc0>
+grabGesture: <built-in method grabGesture of Browser object at 0x148091dc0>
+grabKeyboard: <built-in method grabKeyboard of Browser object at 0x148091dc0>
+grabMouse: <built-in method grabMouse of Browser object at 0x148091dc0>
+grabShortcut: <built-in method grabShortcut of Browser object at 0x148091dc0>
+graphicsEffect: <built-in method graphicsEffect of Browser object at 0x148091dc0>
+graphicsProxyWidget: <built-in method graphicsProxyWidget of Browser object at 0x148091dc0>
+hasFocus: <built-in method hasFocus of Browser object at 0x148091dc0>
+hasHeightForWidth: <built-in method hasHeightForWidth of Browser object at 0x148091dc0>
+hasMouseTracking: <built-in method hasMouseTracking of Browser object at 0x148091dc0>
+hasTabletTracking: <built-in method hasTabletTracking of Browser object at 0x148091dc0>
+has_next_card: <bound method Browser.has_next_card of <aqt.browser.browser.Browser object at 0x148091dc0>>
+has_previous_card: <bound method Browser.has_previous_card of <aqt.browser.browser.Browser object at 0x148091dc0>>
+height: <built-in method height of Browser object at 0x148091dc0>
+heightForWidth: <built-in method heightForWidth of Browser object at 0x148091dc0>
+heightMM: <built-in method heightMM of Browser object at 0x148091dc0>
+hide: <built-in method hide of Browser object at 0x148091dc0>
+hideEvent: <built-in method hideEvent of Browser object at 0x148091dc0>
+iconSize: <built-in method iconSize of Browser object at 0x148091dc0>
+iconSizeChanged: <bound PYQT_SIGNAL iconSizeChanged of Browser object at 0x148091dc0>
+inherits: <built-in method inherits of Browser object at 0x148091dc0>
+initPainter: <built-in method initPainter of Browser object at 0x148091dc0>
+inputMethodEvent: <built-in method inputMethodEvent of Browser object at 0x148091dc0>
+inputMethodHints: <built-in method inputMethodHints of Browser object at 0x148091dc0>
+inputMethodQuery: <built-in method inputMethodQuery of Browser object at 0x148091dc0>
+insertAction: <built-in method insertAction of Browser object at 0x148091dc0>
+insertActions: <built-in method insertActions of Browser object at 0x148091dc0>
+insertToolBar: <built-in method insertToolBar of Browser object at 0x148091dc0>
+insertToolBarBreak: <built-in method insertToolBarBreak of Browser object at 0x148091dc0>
+installEventFilter: <built-in method installEventFilter of Browser object at 0x148091dc0>
+isActiveWindow: <built-in method isActiveWindow of Browser object at 0x148091dc0>
+isAncestorOf: <built-in method isAncestorOf of Browser object at 0x148091dc0>
+isAnimated: <built-in method isAnimated of Browser object at 0x148091dc0>
+isDockNestingEnabled: <built-in method isDockNestingEnabled of Browser object at 0x148091dc0>
+isEnabled: <built-in method isEnabled of Browser object at 0x148091dc0>
+isEnabledTo: <built-in method isEnabledTo of Browser object at 0x148091dc0>
+isFullScreen: <built-in method isFullScreen of Browser object at 0x148091dc0>
+isHidden: <built-in method isHidden of Browser object at 0x148091dc0>
+isLeftToRight: <built-in method isLeftToRight of Browser object at 0x148091dc0>
+isMaximized: <built-in method isMaximized of Browser object at 0x148091dc0>
+isMinimized: <built-in method isMinimized of Browser object at 0x148091dc0>
+isModal: <built-in method isModal of Browser object at 0x148091dc0>
+isQuickItemType: <built-in method isQuickItemType of Browser object at 0x148091dc0>
+isRightToLeft: <built-in method isRightToLeft of Browser object at 0x148091dc0>
+isSeparator: <built-in method isSeparator of Browser object at 0x148091dc0>
+isSignalConnected: <built-in method isSignalConnected of Browser object at 0x148091dc0>
+isVisible: <built-in method isVisible of Browser object at 0x148091dc0>
+isVisibleTo: <built-in method isVisibleTo of Browser object at 0x148091dc0>
+isWidgetType: <built-in method isWidgetType of Browser object at 0x148091dc0>
+isWindow: <built-in method isWindow of Browser object at 0x148091dc0>
+isWindowModified: <built-in method isWindowModified of Browser object at 0x148091dc0>
+isWindowType: <built-in method isWindowType of Browser object at 0x148091dc0>
+keyPressEvent: <bound method Browser.keyPressEvent of <aqt.browser.browser.Browser object at 0x148091dc0>>
+keyReleaseEvent: <built-in method keyReleaseEvent of Browser object at 0x148091dc0>
+keyboardGrabber: <built-in method keyboardGrabber of Browser object at 0x148091dc0>
+killTimer: <built-in method killTimer of Browser object at 0x148091dc0>
+lastFilter: 
+layout: <built-in method layout of Browser object at 0x148091dc0>
+layoutDirection: <built-in method layoutDirection of Browser object at 0x148091dc0>
+leaveEvent: <built-in method leaveEvent of Browser object at 0x148091dc0>
+locale: <built-in method locale of Browser object at 0x148091dc0>
+logicalDpiX: <built-in method logicalDpiX of Browser object at 0x148091dc0>
+logicalDpiY: <built-in method logicalDpiY of Browser object at 0x148091dc0>
+lower: <built-in method lower of Browser object at 0x148091dc0>
+mapFrom: <built-in method mapFrom of Browser object at 0x148091dc0>
+mapFromGlobal: <built-in method mapFromGlobal of Browser object at 0x148091dc0>
+mapFromParent: <built-in method mapFromParent of Browser object at 0x148091dc0>
+mapTo: <built-in method mapTo of Browser object at 0x148091dc0>
+mapToGlobal: <built-in method mapToGlobal of Browser object at 0x148091dc0>
+mapToParent: <built-in method mapToParent of Browser object at 0x148091dc0>
+mask: <built-in method mask of Browser object at 0x148091dc0>
+maximumHeight: <built-in method maximumHeight of Browser object at 0x148091dc0>
+maximumSize: <built-in method maximumSize of Browser object at 0x148091dc0>
+maximumWidth: <built-in method maximumWidth of Browser object at 0x148091dc0>
+maybe_update_layout: <bound method Browser.maybe_update_layout of <aqt.browser.browser.Browser object at 0x148091dc0>>
+menuBar: <built-in method menuBar of Browser object at 0x148091dc0>
+menuWidget: <built-in method menuWidget of Browser object at 0x148091dc0>
+metaObject: <built-in method metaObject of Browser object at 0x148091dc0>
+metric: <built-in method metric of Browser object at 0x148091dc0>
+minimumHeight: <built-in method minimumHeight of Browser object at 0x148091dc0>
+minimumSize: <built-in method minimumSize of Browser object at 0x148091dc0>
+minimumSizeHint: <built-in method minimumSizeHint of Browser object at 0x148091dc0>
+minimumWidth: <built-in method minimumWidth of Browser object at 0x148091dc0>
+mouseDoubleClickEvent: <built-in method mouseDoubleClickEvent of Browser object at 0x148091dc0>
+mouseGrabber: <built-in method mouseGrabber of Browser object at 0x148091dc0>
+mouseMoveEvent: <built-in method mouseMoveEvent of Browser object at 0x148091dc0>
+mousePressEvent: <built-in method mousePressEvent of Browser object at 0x148091dc0>
+mouseReleaseEvent: <built-in method mouseReleaseEvent of Browser object at 0x148091dc0>
+move: <built-in method move of Browser object at 0x148091dc0>
+moveEvent: <built-in method moveEvent of Browser object at 0x148091dc0>
+moveToThread: <built-in method moveToThread of Browser object at 0x148091dc0>
+mw: <aqt.main.AnkiQt object at 0x10e2c8310>
+nativeEvent: <built-in method nativeEvent of Browser object at 0x148091dc0>
+nativeParentWidget: <built-in method nativeParentWidget of Browser object at 0x148091dc0>
+nextInFocusChain: <built-in method nextInFocusChain of Browser object at 0x148091dc0>
+normalGeometry: <built-in method normalGeometry of Browser object at 0x148091dc0>
+objectName: <built-in method objectName of Browser object at 0x148091dc0>
+objectNameChanged: <bound PYQT_SIGNAL objectNameChanged of Browser object at 0x148091dc0>
+onCardList: <bound method Browser.onCardList of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onChangeModel: <bound method Browser.onChangeModel of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onFind: <bound method Browser.onFind of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onFindDupes: <bound method Browser.onFindDupes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onFindReplace: <bound method Browser.onFindReplace of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onFirstCard: <bound method Browser.onFirstCard of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onHelp: <bound method Browser.onHelp of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onLastCard: <bound method Browser.onLastCard of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onNextCard: <bound method Browser.onNextCard of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onNote: <bound method Browser.onNote of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onPreviousCard: <bound method Browser.onPreviousCard of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onReset: <bound method Browser.onReset of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onRowChanged: <bound method Browser.onRowChanged of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onSearchActivated: <bound method Browser.onSearchActivated of <aqt.browser.browser.Browser object at 0x148091dc0>>
+onTogglePreview: <bound method Browser.onTogglePreview of <aqt.browser.browser.Browser object at 0x148091dc0>>
+on_all_or_selected_rows_changed: <bound method Browser.on_all_or_selected_rows_changed of <aqt.browser.browser.Browser object at 0x148091dc0>>
+on_create_copy: <bound method Browser.on_create_copy of <aqt.browser.browser.Browser object at 0x148091dc0>>
+on_current_row_changed: <bound method Browser.on_current_row_changed of <aqt.browser.browser.Browser object at 0x148091dc0>>
+on_focus_change: <bound method Browser.on_focus_change of <aqt.browser.browser.Browser object at 0x148091dc0>>
+on_operation_did_execute: <bound method Browser.on_operation_did_execute of <aqt.browser.browser.Browser object at 0x148091dc0>>
+on_table_state_changed: <bound method Browser.on_table_state_changed of <aqt.browser.browser.Browser object at 0x148091dc0>>
+on_undo_state_change: <bound method Browser.on_undo_state_change of <aqt.browser.browser.Browser object at 0x148091dc0>>
+overrideWindowFlags: <built-in method overrideWindowFlags of Browser object at 0x148091dc0>
+overrideWindowState: <built-in method overrideWindowState of Browser object at 0x148091dc0>
+paintEngine: <built-in method paintEngine of Browser object at 0x148091dc0>
+paintEvent: <built-in method paintEvent of Browser object at 0x148091dc0>
+paintingActive: <built-in method paintingActive of Browser object at 0x148091dc0>
+palette: <built-in method palette of Browser object at 0x148091dc0>
+parent: <built-in method parent of Browser object at 0x148091dc0>
+parentWidget: <built-in method parentWidget of Browser object at 0x148091dc0>
+pgDownCut: <PyQt6.QtGui.QShortcut object at 0x32a14f1f0>
+pgUpCut: <PyQt6.QtGui.QShortcut object at 0x32a14f160>
+physicalDpiX: <built-in method physicalDpiX of Browser object at 0x148091dc0>
+physicalDpiY: <built-in method physicalDpiY of Browser object at 0x148091dc0>
+pos: <built-in method pos of Browser object at 0x148091dc0>
+previousInFocusChain: <built-in method previousInFocusChain of Browser object at 0x148091dc0>
+property: <built-in method property of Browser object at 0x148091dc0>
+pyqtConfigure: <built-in method pyqtConfigure of Browser object at 0x148091dc0>
+raise_: <built-in method raise_ of Browser object at 0x148091dc0>
+receivers: <built-in method receivers of Browser object at 0x148091dc0>
+rect: <built-in method rect of Browser object at 0x148091dc0>
+redo: <bound method Browser.redo of <aqt.browser.browser.Browser object at 0x148091dc0>>
+releaseKeyboard: <built-in method releaseKeyboard of Browser object at 0x148091dc0>
+releaseMouse: <built-in method releaseMouse of Browser object at 0x148091dc0>
+releaseShortcut: <built-in method releaseShortcut of Browser object at 0x148091dc0>
+removeAction: <built-in method removeAction of Browser object at 0x148091dc0>
+removeDockWidget: <built-in method removeDockWidget of Browser object at 0x148091dc0>
+removeEventFilter: <built-in method removeEventFilter of Browser object at 0x148091dc0>
+removeToolBar: <built-in method removeToolBar of Browser object at 0x148091dc0>
+removeToolBarBreak: <built-in method removeToolBarBreak of Browser object at 0x148091dc0>
+remove_tags_from_selected_notes: <bound method Browser.remove_tags_from_selected_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+render: <built-in method render of Browser object at 0x148091dc0>
+reopen: <bound method Browser.reopen of <aqt.browser.browser.Browser object at 0x148091dc0>>
+repaint: <built-in method repaint of Browser object at 0x148091dc0>
+reposition: <bound method Browser.reposition of <aqt.browser.browser.Browser object at 0x148091dc0>>
+resize: <built-in method resize of Browser object at 0x148091dc0>
+resizeDocks: <built-in method resizeDocks of Browser object at 0x148091dc0>
+resizeEvent: <bound method Browser.resizeEvent of <aqt.browser.browser.Browser object at 0x148091dc0>>
+restoreDockWidget: <built-in method restoreDockWidget of Browser object at 0x148091dc0>
+restoreGeometry: <built-in method restoreGeometry of Browser object at 0x148091dc0>
+restoreState: <built-in method restoreState of Browser object at 0x148091dc0>
+saveGeometry: <built-in method saveGeometry of Browser object at 0x148091dc0>
+saveState: <built-in method saveState of Browser object at 0x148091dc0>
+screen: <built-in method screen of Browser object at 0x148091dc0>
+scroll: <built-in method scroll of Browser object at 0x148091dc0>
+search: <bound method Browser.search of <aqt.browser.browser.Browser object at 0x148091dc0>>
+search_for: <bound method Browser.search_for of <aqt.browser.browser.Browser object at 0x148091dc0>>
+search_for_terms: <bound method Browser.search_for_terms of <aqt.browser.browser.Browser object at 0x148091dc0>>
+selectNotes: <bound method Browser.selectNotes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+selectedCards: <bound method Browser.selected_cards of <aqt.browser.browser.Browser object at 0x148091dc0>>
+selectedNotes: <bound method Browser.selected_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+selectedNotesAsCards: <bound method Browser.selectedNotesAsCards of <aqt.browser.browser.Browser object at 0x148091dc0>>
+selected_cards: <bound method Browser.selected_cards of <aqt.browser.browser.Browser object at 0x148091dc0>>
+selected_notes: <bound method Browser.selected_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+sender: <built-in method sender of Browser object at 0x148091dc0>
+senderSignalIndex: <built-in method senderSignalIndex of Browser object at 0x148091dc0>
+setAcceptDrops: <built-in method setAcceptDrops of Browser object at 0x148091dc0>
+setAccessibleDescription: <built-in method setAccessibleDescription of Browser object at 0x148091dc0>
+setAccessibleName: <built-in method setAccessibleName of Browser object at 0x148091dc0>
+setAnimated: <built-in method setAnimated of Browser object at 0x148091dc0>
+setAttribute: <built-in method setAttribute of Browser object at 0x148091dc0>
+setAutoFillBackground: <built-in method setAutoFillBackground of Browser object at 0x148091dc0>
+setBackgroundRole: <built-in method setBackgroundRole of Browser object at 0x148091dc0>
+setBaseSize: <built-in method setBaseSize of Browser object at 0x148091dc0>
+setCentralWidget: <built-in method setCentralWidget of Browser object at 0x148091dc0>
+setContentsMargins: <built-in method setContentsMargins of Browser object at 0x148091dc0>
+setContextMenuPolicy: <built-in method setContextMenuPolicy of Browser object at 0x148091dc0>
+setCorner: <built-in method setCorner of Browser object at 0x148091dc0>
+setCursor: <built-in method setCursor of Browser object at 0x148091dc0>
+setDeck: <bound method Browser.set_deck_of_selected_cards of <aqt.browser.browser.Browser object at 0x148091dc0>>
+setDisabled: <built-in method setDisabled of Browser object at 0x148091dc0>
+setDockNestingEnabled: <built-in method setDockNestingEnabled of Browser object at 0x148091dc0>
+setDockOptions: <built-in method setDockOptions of Browser object at 0x148091dc0>
+setDocumentMode: <built-in method setDocumentMode of Browser object at 0x148091dc0>
+setEnabled: <built-in method setEnabled of Browser object at 0x148091dc0>
+setFilter: <bound method Browser.setFilter of <aqt.browser.browser.Browser object at 0x148091dc0>>
+setFixedHeight: <built-in method setFixedHeight of Browser object at 0x148091dc0>
+setFixedSize: <built-in method setFixedSize of Browser object at 0x148091dc0>
+setFixedWidth: <built-in method setFixedWidth of Browser object at 0x148091dc0>
+setFocus: <built-in method setFocus of Browser object at 0x148091dc0>
+setFocusPolicy: <built-in method setFocusPolicy of Browser object at 0x148091dc0>
+setFocusProxy: <built-in method setFocusProxy of Browser object at 0x148091dc0>
+setFont: <built-in method setFont of Browser object at 0x148091dc0>
+setForegroundRole: <built-in method setForegroundRole of Browser object at 0x148091dc0>
+setGeometry: <built-in method setGeometry of Browser object at 0x148091dc0>
+setGraphicsEffect: <built-in method setGraphicsEffect of Browser object at 0x148091dc0>
+setHidden: <built-in method setHidden of Browser object at 0x148091dc0>
+setIconSize: <built-in method setIconSize of Browser object at 0x148091dc0>
+setInputMethodHints: <built-in method setInputMethodHints of Browser object at 0x148091dc0>
+setLayout: <built-in method setLayout of Browser object at 0x148091dc0>
+setLayoutDirection: <built-in method setLayoutDirection of Browser object at 0x148091dc0>
+setLocale: <built-in method setLocale of Browser object at 0x148091dc0>
+setMask: <built-in method setMask of Browser object at 0x148091dc0>
+setMaximumHeight: <built-in method setMaximumHeight of Browser object at 0x148091dc0>
+setMaximumSize: <built-in method setMaximumSize of Browser object at 0x148091dc0>
+setMaximumWidth: <built-in method setMaximumWidth of Browser object at 0x148091dc0>
+setMenuBar: <built-in method setMenuBar of Browser object at 0x148091dc0>
+setMenuWidget: <built-in method setMenuWidget of Browser object at 0x148091dc0>
+setMinimumHeight: <built-in method setMinimumHeight of Browser object at 0x148091dc0>
+setMinimumSize: <built-in method setMinimumSize of Browser object at 0x148091dc0>
+setMinimumWidth: <built-in method setMinimumWidth of Browser object at 0x148091dc0>
+setMouseTracking: <built-in method setMouseTracking of Browser object at 0x148091dc0>
+setObjectName: <built-in method setObjectName of Browser object at 0x148091dc0>
+setPalette: <built-in method setPalette of Browser object at 0x148091dc0>
+setParent: <built-in method setParent of Browser object at 0x148091dc0>
+setProperty: <built-in method setProperty of Browser object at 0x148091dc0>
+setScreen: <built-in method setScreen of Browser object at 0x148091dc0>
+setShortcutAutoRepeat: <built-in method setShortcutAutoRepeat of Browser object at 0x148091dc0>
+setShortcutEnabled: <built-in method setShortcutEnabled of Browser object at 0x148091dc0>
+setSizeIncrement: <built-in method setSizeIncrement of Browser object at 0x148091dc0>
+setSizePolicy: <built-in method setSizePolicy of Browser object at 0x148091dc0>
+setStatusBar: <built-in method setStatusBar of Browser object at 0x148091dc0>
+setStatusTip: <built-in method setStatusTip of Browser object at 0x148091dc0>
+setStyle: <built-in method setStyle of Browser object at 0x148091dc0>
+setStyleSheet: <built-in method setStyleSheet of Browser object at 0x148091dc0>
+setTabOrder: <built-in method setTabOrder of Browser object at 0x148091dc0>
+setTabPosition: <built-in method setTabPosition of Browser object at 0x148091dc0>
+setTabShape: <built-in method setTabShape of Browser object at 0x148091dc0>
+setTabletTracking: <built-in method setTabletTracking of Browser object at 0x148091dc0>
+setToolButtonStyle: <built-in method setToolButtonStyle of Browser object at 0x148091dc0>
+setToolTip: <built-in method setToolTip of Browser object at 0x148091dc0>
+setToolTipDuration: <built-in method setToolTipDuration of Browser object at 0x148091dc0>
+setUnifiedTitleAndToolBarOnMac: <built-in method setUnifiedTitleAndToolBarOnMac of Browser object at 0x148091dc0>
+setUpdatesEnabled: <built-in method setUpdatesEnabled of Browser object at 0x148091dc0>
+setVisible: <built-in method setVisible of Browser object at 0x148091dc0>
+setWhatsThis: <built-in method setWhatsThis of Browser object at 0x148091dc0>
+setWindowFilePath: <built-in method setWindowFilePath of Browser object at 0x148091dc0>
+setWindowFlag: <built-in method setWindowFlag of Browser object at 0x148091dc0>
+setWindowFlags: <built-in method setWindowFlags of Browser object at 0x148091dc0>
+setWindowIcon: <built-in method setWindowIcon of Browser object at 0x148091dc0>
+setWindowIconText: <built-in method setWindowIconText of Browser object at 0x148091dc0>
+setWindowModality: <built-in method setWindowModality of Browser object at 0x148091dc0>
+setWindowModified: <built-in method setWindowModified of Browser object at 0x148091dc0>
+setWindowOpacity: <built-in method setWindowOpacity of Browser object at 0x148091dc0>
+setWindowRole: <built-in method setWindowRole of Browser object at 0x148091dc0>
+setWindowState: <built-in method setWindowState of Browser object at 0x148091dc0>
+setWindowTitle: <built-in method setWindowTitle of Browser object at 0x148091dc0>
+set_deck_of_selected_cards: <bound method Browser.set_deck_of_selected_cards of <aqt.browser.browser.Browser object at 0x148091dc0>>
+set_due_date: <bound method Browser.set_due_date of <aqt.browser.browser.Browser object at 0x148091dc0>>
+set_flag_of_selected_cards: <bound method Browser.set_flag_of_selected_cards of <aqt.browser.browser.Browser object at 0x148091dc0>>
+set_layout: <bound method Browser.set_layout of <aqt.browser.browser.Browser object at 0x148091dc0>>
+setupEditor: <bound method Browser.setupEditor of <aqt.browser.browser.Browser object at 0x148091dc0>>
+setupHooks: <bound method Browser.setupHooks of <aqt.browser.browser.Browser object at 0x148091dc0>>
+setupMenus: <bound method Browser.setupMenus of <aqt.browser.browser.Browser object at 0x148091dc0>>
+setupSearch: <bound method Browser.setupSearch of <aqt.browser.browser.Browser object at 0x148091dc0>>
+setupSidebar: <bound method Browser.setupSidebar of <aqt.browser.browser.Browser object at 0x148091dc0>>
+setup_table: <bound method Browser.setup_table of <aqt.browser.browser.Browser object at 0x148091dc0>>
+sharedPainter: <built-in method sharedPainter of Browser object at 0x148091dc0>
+show: <built-in method show of Browser object at 0x148091dc0>
+showCardInfo: <bound method Browser.showCardInfo of <aqt.browser.browser.Browser object at 0x148091dc0>>
+showEvent: <built-in method showEvent of Browser object at 0x148091dc0>
+showFullScreen: <built-in method showFullScreen of Browser object at 0x148091dc0>
+showMaximized: <built-in method showMaximized of Browser object at 0x148091dc0>
+showMinimized: <built-in method showMinimized of Browser object at 0x148091dc0>
+showNormal: <built-in method showNormal of Browser object at 0x148091dc0>
+showSidebar: <bound method Browser.showSidebar of <aqt.browser.browser.Browser object at 0x148091dc0>>
+sidebar: <aqt.browser.sidebar.tree.SidebarTreeView object at 0x149bc3ca0>
+sidebarDockWidget: <PyQt6.QtWidgets.QDockWidget object at 0x149bc3c10>
+sidebarTree: <aqt.browser.sidebar.tree.SidebarTreeView object at 0x149bc3ca0>
+signalsBlocked: <built-in method signalsBlocked of Browser object at 0x148091dc0>
+size: <built-in method size of Browser object at 0x148091dc0>
+sizeHint: <built-in method sizeHint of Browser object at 0x148091dc0>
+sizeIncrement: <built-in method sizeIncrement of Browser object at 0x148091dc0>
+sizePolicy: <built-in method sizePolicy of Browser object at 0x148091dc0>
+splitDockWidget: <built-in method splitDockWidget of Browser object at 0x148091dc0>
+stackUnder: <built-in method stackUnder of Browser object at 0x148091dc0>
+startTimer: <built-in method startTimer of Browser object at 0x148091dc0>
+staticMetaObject: <PyQt6.QtCore.QMetaObject object at 0x127663d60>
+statusBar: <built-in method statusBar of Browser object at 0x148091dc0>
+statusTip: <built-in method statusTip of Browser object at 0x148091dc0>
+style: <built-in method style of Browser object at 0x148091dc0>
+styleSheet: <built-in method styleSheet of Browser object at 0x148091dc0>
+suspend_selected_cards: <bound method Browser.suspend_selected_cards of <aqt.browser.browser.Browser object at 0x148091dc0>>
+tabPosition: <built-in method tabPosition of Browser object at 0x148091dc0>
+tabShape: <built-in method tabShape of Browser object at 0x148091dc0>
+tabifiedDockWidgetActivated: <bound PYQT_SIGNAL tabifiedDockWidgetActivated of Browser object at 0x148091dc0>
+tabifiedDockWidgets: <built-in method tabifiedDockWidgets of Browser object at 0x148091dc0>
+tabifyDockWidget: <built-in method tabifyDockWidget of Browser object at 0x148091dc0>
+table: <aqt.browser.table.table.Table object at 0x14812d0a0>
+tabletEvent: <built-in method tabletEvent of Browser object at 0x148091dc0>
+takeCentralWidget: <built-in method takeCentralWidget of Browser object at 0x148091dc0>
+teardownHooks: <bound method Browser.teardownHooks of <aqt.browser.browser.Browser object at 0x148091dc0>>
+testAttribute: <built-in method testAttribute of Browser object at 0x148091dc0>
+thread: <built-in method thread of Browser object at 0x148091dc0>
+timerEvent: <built-in method timerEvent of Browser object at 0x148091dc0>
+toggle_mark_of_selected_notes: <bound method Browser.toggle_mark_of_selected_notes of <aqt.browser.browser.Browser object at 0x148091dc0>>
+toggle_preview_button_state: <bound method Browser.toggle_preview_button_state of <aqt.browser.browser.Browser object at 0x148091dc0>>
+toggle_sidebar: <bound method Browser.toggle_sidebar of <aqt.browser.browser.Browser object at 0x148091dc0>>
+toolBarArea: <built-in method toolBarArea of Browser object at 0x148091dc0>
+toolBarBreak: <built-in method toolBarBreak of Browser object at 0x148091dc0>
+toolButtonStyle: <built-in method toolButtonStyle of Browser object at 0x148091dc0>
+toolButtonStyleChanged: <bound PYQT_SIGNAL toolButtonStyleChanged of Browser object at 0x148091dc0>
+toolTip: <built-in method toolTip of Browser object at 0x148091dc0>
+toolTipDuration: <built-in method toolTipDuration of Browser object at 0x148091dc0>
+tr: <built-in method tr of Browser object at 0x148091dc0>
+underMouse: <built-in method underMouse of Browser object at 0x148091dc0>
+undo: <bound method Browser.undo of <aqt.browser.browser.Browser object at 0x148091dc0>>
+ungrabGesture: <built-in method ungrabGesture of Browser object at 0x148091dc0>
+unifiedTitleAndToolBarOnMac: <built-in method unifiedTitleAndToolBarOnMac of Browser object at 0x148091dc0>
+unsetCursor: <built-in method unsetCursor of Browser object at 0x148091dc0>
+unsetLayoutDirection: <built-in method unsetLayoutDirection of Browser object at 0x148091dc0>
+unsetLocale: <built-in method unsetLocale of Browser object at 0x148091dc0>
+update: <built-in method update of Browser object at 0x148091dc0>
+updateGeometry: <built-in method updateGeometry of Browser object at 0x148091dc0>
+updateMicroFocus: <built-in method updateMicroFocus of Browser object at 0x148091dc0>
+updateTitle: <bound method Browser.updateTitle of <aqt.browser.browser.Browser object at 0x148091dc0>>
+update_history: <bound method Browser.update_history of <aqt.browser.browser.Browser object at 0x148091dc0>>
+updatesEnabled: <built-in method updatesEnabled of Browser object at 0x148091dc0>
+visibleRegion: <built-in method visibleRegion of Browser object at 0x148091dc0>
+whatsThis: <built-in method whatsThis of Browser object at 0x148091dc0>
+wheelEvent: <built-in method wheelEvent of Browser object at 0x148091dc0>
+width: <built-in method width of Browser object at 0x148091dc0>
+widthMM: <built-in method widthMM of Browser object at 0x148091dc0>
+winId: <built-in method winId of Browser object at 0x148091dc0>
+window: <built-in method window of Browser object at 0x148091dc0>
+windowFilePath: <built-in method windowFilePath of Browser object at 0x148091dc0>
+windowFlags: <built-in method windowFlags of Browser object at 0x148091dc0>
+windowHandle: <built-in method windowHandle of Browser object at 0x148091dc0>
+windowIcon: <built-in method windowIcon of Browser object at 0x148091dc0>
+windowIconChanged: <bound PYQT_SIGNAL windowIconChanged of Browser object at 0x148091dc0>
+windowIconText: <built-in method windowIconText of Browser object at 0x148091dc0>
+windowIconTextChanged: <bound PYQT_SIGNAL windowIconTextChanged of Browser object at 0x148091dc0>
+windowModality: <built-in method windowModality of Browser object at 0x148091dc0>
+windowOpacity: <built-in method windowOpacity of Browser object at 0x148091dc0>
+windowRole: <built-in method windowRole of Browser object at 0x148091dc0>
+windowState: <built-in method windowState of Browser object at 0x148091dc0>
+windowTitle: <built-in method windowTitle of Browser object at 0x148091dc0>
+windowTitleChanged: <bound PYQT_SIGNAL windowTitleChanged of Browser object at 0x148091dc0>
+windowType: <built-in method windowType of Browser object at 0x148091dc0>
+x: <built-in method x of Browser object at 0x148091dc0>
+y: <built-in method y of Browser object at 0x148091dc0>
+
+browser.form attributes:
+__class__: <class '_aqt.forms.browser_qt6.Ui_Dialog'>
+__delattr__: <method-wrapper '__delattr__' of Ui_Dialog object at 0x149bc80d0>
+__dict__: {'centralwidget': <PyQt6.QtWidgets.QWidget object at 0x14813e1f0>, 'verticalLayout_3': <PyQt6.QtWidgets.QVBoxLayout object at 0x14813e0d0>, 'splitter': <PyQt6.QtWidgets.QSplitter object at 0x14813e040>, 'widget': <PyQt6.QtWidgets.QWidget object at 0x14813e160>, 'verticalLayout_2': <PyQt6.QtWidgets.QVBoxLayout object at 0x148130f70>, 'gridLayout': <PyQt6.QtWidgets.QGridLayout object at 0x148130ee0>, 'searchEdit': <PyQt6.QtWidgets.QComboBox object at 0x148130dc0>, 'tableView': <PyQt6.QtWidgets.QTableView object at 0x148130ca0>, 'verticalLayoutWidget': <PyQt6.QtWidgets.QWidget object at 0x148130c10>, 'verticalLayout': <PyQt6.QtWidgets.QVBoxLayout object at 0x148130af0>, 'horizontalLayout2': <PyQt6.QtWidgets.QHBoxLayout object at 0x148130790>, 'fieldsArea': <PyQt6.QtWidgets.QWidget object at 0x148130a60>, 'menubar': <PyQt6.QtWidgets.QMenuBar object at 0x127230a60>, 'menuEdit': <PyQt6.QtWidgets.QMenu object at 0x127230ca0>, 'menuJump': <PyQt6.QtWidgets.QMenu object at 0x149bc7280>, 'menu_Help': <PyQt6.QtWidgets.QMenu object at 0x149bc71f0>, 'menu_Cards': <PyQt6.QtWidgets.QMenu object at 0x149bc7160>, 'menuFlag': <PyQt6.QtWidgets.QMenu object at 0x149bc70d0>, 'menu_Notes': <PyQt6.QtWidgets.QMenu object at 0x149bc7040>, 'menuqt_accel_view': <PyQt6.QtWidgets.QMenu object at 0x149bc7310>, 'menuLayout': <PyQt6.QtWidgets.QMenu object at 0x149bc73a0>, 'actionSelectAll': <PyQt6.QtGui.QAction object at 0x149bc7430>, 'actionUndo': <PyQt6.QtGui.QAction object at 0x149bc74c0>, 'actionInvertSelection': <PyQt6.QtGui.QAction object at 0x149bc7550>, 'actionFind': <PyQt6.QtGui.QAction object at 0x149bc75e0>, 'actionNote': <PyQt6.QtGui.QAction object at 0x149bc7670>, 'actionNextCard': <PyQt6.QtGui.QAction object at 0x149bc7700>, 'actionPreviousCard': <PyQt6.QtGui.QAction object at 0x149bc7790>, 'actionGuide': <PyQt6.QtGui.QAction object at 0x149bc7820>, 'actionChangeModel': <PyQt6.QtGui.QAction object at 0x149bc78b0>, 'actionSelectNotes': <PyQt6.QtGui.QAction object at 0x149bc7940>, 'actionFindReplace': <PyQt6.QtGui.QAction object at 0x149bc79d0>, 'actionSidebarFilter': <PyQt6.QtGui.QAction object at 0x149bc7a60>, 'actionCardList': <PyQt6.QtGui.QAction object at 0x149bc7af0>, 'actionFindDuplicates': <PyQt6.QtGui.QAction object at 0x149bc7b80>, 'actionReposition': <PyQt6.QtGui.QAction object at 0x149bc7c10>, 'actionFirstCard': <PyQt6.QtGui.QAction object at 0x149bc7ca0>, 'actionLastCard': <PyQt6.QtGui.QAction object at 0x149bc7d30>, 'actionClose': <PyQt6.QtGui.QAction object at 0x149bc7dc0>, 'action_Info': <PyQt6.QtGui.QAction object at 0x149bc7e50>, 'actionAdd_Tags': <PyQt6.QtGui.QAction object at 0x149bc7ee0>, 'actionRemove_Tags': <PyQt6.QtGui.QAction object at 0x149bc7f70>, 'actionToggle_Suspend': <PyQt6.QtGui.QAction object at 0x149bc5040>, 'actionDelete': <PyQt6.QtGui.QAction object at 0x149bc50d0>, 'actionAdd': <PyQt6.QtGui.QAction object at 0x149bc5160>, 'actionChange_Deck': <PyQt6.QtGui.QAction object at 0x149bc51f0>, 'actionRed_Flag': <PyQt6.QtGui.QAction object at 0x149bc5280>, 'actionOrange_Flag': <PyQt6.QtGui.QAction object at 0x149bc5310>, 'actionGreen_Flag': <PyQt6.QtGui.QAction object at 0x149bc53a0>, 'actionBlue_Flag': <PyQt6.QtGui.QAction object at 0x149bc5430>, 'actionSidebar': <PyQt6.QtGui.QAction object at 0x149bc54c0>, 'actionClear_Unused_Tags': <PyQt6.QtGui.QAction object at 0x149bc5550>, 'actionManage_Note_Types': <PyQt6.QtGui.QAction object at 0x149bc55e0>, 'actionToggle_Mark': <PyQt6.QtGui.QAction object at 0x149bc5670>, 'actionExport': <PyQt6.QtGui.QAction object at 0x149bc5700>, 'actionCreateFilteredDeck': <PyQt6.QtGui.QAction object at 0x149bc5790>, 'action_set_due_date': <PyQt6.QtGui.QAction object at 0x149bc5820>, 'action_forget': <PyQt6.QtGui.QAction object at 0x149bc58b0>, 'action_toggle_mode': <PyQt6.QtGui.QAction object at 0x149bc5940>, 'actionRedo': <PyQt6.QtGui.QAction object at 0x149bc59d0>, 'actionPink_Flag': <PyQt6.QtGui.QAction object at 0x149bc5a60>, 'actionTurquoise_Flag': <PyQt6.QtGui.QAction object at 0x149bc5af0>, 'actionPurple_Flag': <PyQt6.QtGui.QAction object at 0x149bc5b80>, 'actionCopy': <PyQt6.QtGui.QAction object at 0x149bc5c10>, 'actionFullScreen': <PyQt6.QtGui.QAction object at 0x149bc5ca0>, 'actionZoomIn': <PyQt6.QtGui.QAction object at 0x149bc5d30>, 'actionZoomOut': <PyQt6.QtGui.QAction object at 0x149bc5dc0>, 'actionResetZoom': <PyQt6.QtGui.QAction object at 0x149bc5e50>, 'actionLayoutAuto': <PyQt6.QtGui.QAction object at 0x149bc5ee0>, 'actionLayoutVertical': <PyQt6.QtGui.QAction object at 0x149bc5f70>, 'actionLayoutHorizontal': <PyQt6.QtGui.QAction object at 0x149bc3040>, 'actionbrowsing_toggle_showing_cards_notes': <PyQt6.QtGui.QAction object at 0x149bc30d0>, 'action_toggle_bury': <PyQt6.QtGui.QAction object at 0x149bc3160>}
+__dir__: <built-in method __dir__ of Ui_Dialog object at 0x149bc80d0>
+__doc__: None
+__eq__: <method-wrapper '__eq__' of Ui_Dialog object at 0x149bc80d0>
+__format__: <built-in method __format__ of Ui_Dialog object at 0x149bc80d0>
+__ge__: <method-wrapper '__ge__' of Ui_Dialog object at 0x149bc80d0>
+__getattribute__: <method-wrapper '__getattribute__' of Ui_Dialog object at 0x149bc80d0>
+__gt__: <method-wrapper '__gt__' of Ui_Dialog object at 0x149bc80d0>
+__hash__: <method-wrapper '__hash__' of Ui_Dialog object at 0x149bc80d0>
+__init__: <method-wrapper '__init__' of Ui_Dialog object at 0x149bc80d0>
+__init_subclass__: <built-in method __init_subclass__ of type object at 0x10b5d8010>
+__le__: <method-wrapper '__le__' of Ui_Dialog object at 0x149bc80d0>
+__lt__: <method-wrapper '__lt__' of Ui_Dialog object at 0x149bc80d0>
+__module__: _aqt.forms.browser_qt6
+__ne__: <method-wrapper '__ne__' of Ui_Dialog object at 0x149bc80d0>
+__new__: <built-in method __new__ of type object at 0x104855730>
+__reduce__: <built-in method __reduce__ of Ui_Dialog object at 0x149bc80d0>
+__reduce_ex__: <built-in method __reduce_ex__ of Ui_Dialog object at 0x149bc80d0>
+__repr__: <method-wrapper '__repr__' of Ui_Dialog object at 0x149bc80d0>
+__setattr__: <method-wrapper '__setattr__' of Ui_Dialog object at 0x149bc80d0>
+__sizeof__: <built-in method __sizeof__ of Ui_Dialog object at 0x149bc80d0>
+__str__: <method-wrapper '__str__' of Ui_Dialog object at 0x149bc80d0>
+__subclasshook__: <built-in method __subclasshook__ of type object at 0x10b5d8010>
+__weakref__: None
+actionAdd: <PyQt6.QtGui.QAction object at 0x149bc5160>
+actionAdd_Tags: <PyQt6.QtGui.QAction object at 0x149bc7ee0>
+actionBlue_Flag: <PyQt6.QtGui.QAction object at 0x149bc5430>
+actionCardList: <PyQt6.QtGui.QAction object at 0x149bc7af0>
+actionChangeModel: <PyQt6.QtGui.QAction object at 0x149bc78b0>
+actionChange_Deck: <PyQt6.QtGui.QAction object at 0x149bc51f0>
+actionClear_Unused_Tags: <PyQt6.QtGui.QAction object at 0x149bc5550>
+actionClose: <PyQt6.QtGui.QAction object at 0x149bc7dc0>
+actionCopy: <PyQt6.QtGui.QAction object at 0x149bc5c10>
+actionCreateFilteredDeck: <PyQt6.QtGui.QAction object at 0x149bc5790>
+actionDelete: <PyQt6.QtGui.QAction object at 0x149bc50d0>
+actionExport: <PyQt6.QtGui.QAction object at 0x149bc5700>
+actionFind: <PyQt6.QtGui.QAction object at 0x149bc75e0>
+actionFindDuplicates: <PyQt6.QtGui.QAction object at 0x149bc7b80>
+actionFindReplace: <PyQt6.QtGui.QAction object at 0x149bc79d0>
+actionFirstCard: <PyQt6.QtGui.QAction object at 0x149bc7ca0>
+actionFullScreen: <PyQt6.QtGui.QAction object at 0x149bc5ca0>
+actionGreen_Flag: <PyQt6.QtGui.QAction object at 0x149bc53a0>
+actionGuide: <PyQt6.QtGui.QAction object at 0x149bc7820>
+actionInvertSelection: <PyQt6.QtGui.QAction object at 0x149bc7550>
+actionLastCard: <PyQt6.QtGui.QAction object at 0x149bc7d30>
+actionLayoutAuto: <PyQt6.QtGui.QAction object at 0x149bc5ee0>
+actionLayoutHorizontal: <PyQt6.QtGui.QAction object at 0x149bc3040>
+actionLayoutVertical: <PyQt6.QtGui.QAction object at 0x149bc5f70>
+actionManage_Note_Types: <PyQt6.QtGui.QAction object at 0x149bc55e0>
+actionNextCard: <PyQt6.QtGui.QAction object at 0x149bc7700>
+actionNote: <PyQt6.QtGui.QAction object at 0x149bc7670>
+actionOrange_Flag: <PyQt6.QtGui.QAction object at 0x149bc5310>
+actionPink_Flag: <PyQt6.QtGui.QAction object at 0x149bc5a60>
+actionPreviousCard: <PyQt6.QtGui.QAction object at 0x149bc7790>
+actionPurple_Flag: <PyQt6.QtGui.QAction object at 0x149bc5b80>
+actionRed_Flag: <PyQt6.QtGui.QAction object at 0x149bc5280>
+actionRedo: <PyQt6.QtGui.QAction object at 0x149bc59d0>
+actionRemove_Tags: <PyQt6.QtGui.QAction object at 0x149bc7f70>
+actionReposition: <PyQt6.QtGui.QAction object at 0x149bc7c10>
+actionResetZoom: <PyQt6.QtGui.QAction object at 0x149bc5e50>
+actionSelectAll: <PyQt6.QtGui.QAction object at 0x149bc7430>
+actionSelectNotes: <PyQt6.QtGui.QAction object at 0x149bc7940>
+actionSidebar: <PyQt6.QtGui.QAction object at 0x149bc54c0>
+actionSidebarFilter: <PyQt6.QtGui.QAction object at 0x149bc7a60>
+actionToggle_Mark: <PyQt6.QtGui.QAction object at 0x149bc5670>
+actionToggle_Suspend: <PyQt6.QtGui.QAction object at 0x149bc5040>
+actionTurquoise_Flag: <PyQt6.QtGui.QAction object at 0x149bc5af0>
+actionUndo: <PyQt6.QtGui.QAction object at 0x149bc74c0>
+actionZoomIn: <PyQt6.QtGui.QAction object at 0x149bc5d30>
+actionZoomOut: <PyQt6.QtGui.QAction object at 0x149bc5dc0>
+action_Info: <PyQt6.QtGui.QAction object at 0x149bc7e50>
+action_forget: <PyQt6.QtGui.QAction object at 0x149bc58b0>
+action_set_due_date: <PyQt6.QtGui.QAction object at 0x149bc5820>
+action_toggle_bury: <PyQt6.QtGui.QAction object at 0x149bc3160>
+action_toggle_mode: <PyQt6.QtGui.QAction object at 0x149bc5940>
+actionbrowsing_toggle_showing_cards_notes: <PyQt6.QtGui.QAction object at 0x149bc30d0>
+centralwidget: <PyQt6.QtWidgets.QWidget object at 0x14813e1f0>
+fieldsArea: <PyQt6.QtWidgets.QWidget object at 0x148130a60>
+gridLayout: <PyQt6.QtWidgets.QGridLayout object at 0x148130ee0>
+horizontalLayout2: <PyQt6.QtWidgets.QHBoxLayout object at 0x148130790>
+menuEdit: <PyQt6.QtWidgets.QMenu object at 0x127230ca0>
+menuFlag: <PyQt6.QtWidgets.QMenu object at 0x149bc70d0>
+menuJump: <PyQt6.QtWidgets.QMenu object at 0x149bc7280>
+menuLayout: <PyQt6.QtWidgets.QMenu object at 0x149bc73a0>
+menu_Cards: <PyQt6.QtWidgets.QMenu object at 0x149bc7160>
+menu_Help: <PyQt6.QtWidgets.QMenu object at 0x149bc71f0>
+menu_Notes: <PyQt6.QtWidgets.QMenu object at 0x149bc7040>
+menubar: <PyQt6.QtWidgets.QMenuBar object at 0x127230a60>
+menuqt_accel_view: <PyQt6.QtWidgets.QMenu object at 0x149bc7310>
+retranslateUi: <bound method Ui_Dialog.retranslateUi of <_aqt.forms.browser_qt6.Ui_Dialog object at 0x149bc80d0>>
+searchEdit: <PyQt6.QtWidgets.QComboBox object at 0x148130dc0>
+setupUi: <bound method Ui_Dialog.setupUi of <_aqt.forms.browser_qt6.Ui_Dialog object at 0x149bc80d0>>
+splitter: <PyQt6.QtWidgets.QSplitter object at 0x14813e040>
+tableView: <PyQt6.QtWidgets.QTableView object at 0x148130ca0>
+verticalLayout: <PyQt6.QtWidgets.QVBoxLayout object at 0x148130af0>
+verticalLayoutWidget: <PyQt6.QtWidgets.QWidget object at 0x148130c10>
+verticalLayout_2: <PyQt6.QtWidgets.QVBoxLayout object at 0x148130f70>
+verticalLayout_3: <PyQt6.QtWidgets.QVBoxLayout object at 0x14813e0d0>
+widget: <PyQt6.QtWidgets.QWidget object at 0x14813e160>

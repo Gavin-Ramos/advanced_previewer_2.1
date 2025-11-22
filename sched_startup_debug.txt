@@ -1,0 +1,11 @@
+==== scheduler attrs at startup ===
+Card ID: 1303080503581
+due: 902 (type: int)
+ivl: 5 (type: int)
+queue: 2 (type: int)
+_lastReviewed: None (type: NoneType)
+_reviewStart: None (type: NoneType)
+_startTimer: None (type: NoneType)
+timerStarted: None (type: NoneType)
+timerStopped: None (type: NoneType)
+timeTaken: <bound method Card.time_taken of <anki.cards.Card object at 0x15672a250>> (type: method)

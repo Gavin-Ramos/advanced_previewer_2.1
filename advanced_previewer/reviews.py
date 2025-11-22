@@ -11,8 +11,11 @@ License: GNU AGPL, version 3 or later; https://www.gnu.org/licenses/agpl-3.0.en.
 
 from __future__ import division
 
-from anki.sched import Scheduler
-from anki.hooks import wrap
+try:
+    from anki.sched import Scheduler
+except ImportError:
+    from anki.sched_v2 import Scheduler
+from aqt.gui_hooks import profile_did_open
 
 
 def nextRevIvl(self, card, ease, _old):
@@ -103,4 +106,8 @@ def nextRevIvl(self, card, ease, _old):
     return min(interval, conf['maxIvl'])
 
 
-Scheduler._nextRevIvl = wrap(Scheduler._nextRevIvl, nextRevIvl, "around")
+def patch_scheduler():
+    from anki.hooks import wrap
+    Scheduler._nextRevIvl = wrap(Scheduler._nextRevIvl, nextRevIvl, "around")
+
+profile_did_open.append(patch_scheduler)

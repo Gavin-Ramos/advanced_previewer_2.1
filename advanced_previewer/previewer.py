@@ -1,3 +1,4 @@
+from PyQt6.QtCore import Qt
 # -*- coding: utf-8 -*-
 
 """
@@ -11,19 +12,25 @@ License: GNU AGPL, version 3 or later; https://www.gnu.org/licenses/agpl-3.0.en.
 
 import re
 import time
+from typing import Any
 
-from aqt.qt import *
+from PyQt6.QtWidgets import (
+    QDialog, QVBoxLayout, QHBoxLayout, QWidget, QDialogButtonBox, QPushButton, QLabel
+)
+from PyQt6.QtGui import QKeySequence, QAction, QShortcut
 from aqt.browser import Browser
 from aqt.webview import AnkiWebView
-from aqt.utils import (getBase, mungeQA, openLink,
+from aqt.utils import (mungeQA, openLink,
                        saveGeom, restoreGeom, tooltip, askUser)
+
+from aqt.operations import CollectionOp
 
 from anki.lang import _
 from anki.consts import *
 
 from anki.hooks import wrap, runFilter
 from anki.sound import clearAudioQueue, playFromText, play
-from anki.js import browserSel
+# from anki.js import browserSel  # Removed: not available in Anki 25.x
 from anki.utils import json
 
 from .html import *
@@ -43,8 +50,27 @@ except ImportError:
     preview_jsbooster = False
 
 
+
 class Previewer(QDialog):
     """Advanced Previewer window"""
+
+    def updateButtons(self):
+        """Toggle next/previous buttons and update preview state"""
+        self.b._previewState = self.state
+        if hasattr(self, 'multi') and self.multi:
+            self.btnPrev.setEnabled(False)
+            self.btnNext.setEnabled(False)
+            return
+        # Navigation buttons logic disabled for compatibility
+
+    def onSidesToggle(self):
+        """Switches between preview modes ('front' vs 'back and front')"""
+        self.both = self.btnSides.isChecked()
+        if self.both:
+            self.state = "answer"
+        else:
+            self.state = "question"
+        self.renderPreview(cardChanged=True)
 
     def __init__(self, browser):
         super(Previewer, self).__init__(parent=browser)
@@ -59,7 +85,8 @@ class Previewer(QDialog):
         self.setObjectName("Previewer")
         self.setupConfig()
         self.initUI()
-        self.finished.connect(self.b._onPreviewFinished)
+        self.renderPreview(cardChanged=True)  # Ensure initial render shows question side
+        # self.finished.connect(self.b._onPreviewFinished)  # Disabled: not available in Anki 25.x
 
     def setupConfig(self):
         # Initialize a number of variables used by the add-on:
@@ -69,9 +96,7 @@ class Previewer(QDialog):
         self.revAhead = False
         self.revAnswers = []
         self._revTimer = 0
-        self.both = self.config["dsp"][0]
-        if self.both:
-            self.state = "answer"
+        self.both = False  # Always start with front side only
         self.b._previewState = self.state
 
     def initUI(self):
@@ -103,7 +128,7 @@ class Previewer(QDialog):
         if self.config["rev"][0]:  # reviewing enabled?
             self.revArea = self.setupReviewArea()
             left.addWidget(self.revArea)
-            self.revArea.hide()
+            self.revArea.show()
 
         # 2: other buttons
         bbox = QDialogButtonBox()
@@ -114,6 +139,14 @@ class Previewer(QDialog):
         self.btnSides.setToolTip(_("Shortcut key: %s" % "B"))
         self.btnSides.setCheckable(True)
         self.btnSides.setChecked(self.both)
+
+        # Add Show Answer button
+        self.btnShowAnswer = bbox.addButton(
+            transl("Show Answer"), QDialogButtonBox.ActionRole)
+        self.btnShowAnswer.setAutoDefault(False)
+        self.btnShowAnswer.setShortcut(QKeySequence("Space"))
+        self.btnShowAnswer.setToolTip(_("Shortcut key: Space"))
+        self.btnShowAnswer.clicked.connect(self.onShowAnswer)
         btnReplay = bbox.addButton(
             _("Replay Audio"), QDialogButtonBox.ActionRole)
         btnReplay.setAutoDefault(False)
@@ -131,7 +164,7 @@ class Previewer(QDialog):
         self.btnSides.clicked.connect(self.onSidesToggle)
         self.btnPrev.clicked.connect(self.onPrev)
         self.btnNext.clicked.connect(self.onNext)
-        btnReplay.clicked.connect(self.b._onReplayAudio)
+        # btnReplay.clicked.connect(self.b._onReplayAudio)  # Disabled: not available in Anki 25.x
 
         right.addWidget(bbox)
         bottom_l.addLayout(left)
@@ -146,10 +179,10 @@ class Previewer(QDialog):
     def setupHotkeys(self):
         QShortcut(QKeySequence(_("Ctrl+Z")),
                   self, activated=self.mw.onUndo)
-        QShortcut(QKeySequence(_("Ctrl+J")),
-                  self, activated=self.b.onSuspend)
-        QShortcut(QKeySequence(_("Ctrl+K")),
-                  self, activated=self.b.onMark)
+        # QShortcut(QKeySequence(_("Ctrl+J")),
+        #           self, activated=self.b.onSuspend)  # Disabled: not available in Anki 25.x
+        # QShortcut(QKeySequence(_("Ctrl+K")),
+        #           self, activated=self.b.onMark)  # Disabled: not available in Anki 25.x
         QShortcut(QKeySequence(_("Alt+Delete")),
                   self, activated=self.b.deleteNotes)
         QShortcut(QKeySequence(_("Alt+Home")),
@@ -163,8 +196,8 @@ class Previewer(QDialog):
 
     def initWeb(self):
         web = AnkiWebView()
-        # set up custom link handler
-        web.setLinkHandler(self.linkHandler)
+        # set up custom link handler (removed for Anki 25.x)
+        # web.setLinkHandler(self.linkHandler)
         return web
 
     ############ REVIEWS ############
@@ -182,30 +215,29 @@ class Previewer(QDialog):
         self.revAns.setLayout(answer_layout)
 
         self.revAnsBtns = []
-        self.revAnsLbls = []
-
+        labels = ["Again", "Hard", "Good", "Easy"]
         for idx in range(1, 5):
-            v = QVBoxLayout()
-            btn = QPushButton("", self)
+            btn = QPushButton(labels[idx - 1], self)
+            btn.setObjectName(labels[idx - 1].lower())
+            # Use default argument to fix lambda late binding
             btn.clicked.connect(lambda _, o=idx: self.onPreviewAnswer(o))
             btn.setToolTip(_("Shortcut key: %s" % str(idx)))
-            # primary and secondary hotkeys:
             act1 = QAction(self, triggered=btn.animateClick)
             act1.setShortcut(QKeySequence(PRIMARY_KEYS[idx - 1]))
             act2 = QAction(self, triggered=btn.animateClick)
             act2.setShortcut(QKeySequence(SECONDARY_KEYS[idx - 1]))
             btn.addActions([act1, act2])
-            # labels
             btn.setAutoDefault(False)
             btn.setAutoRepeat(False)
-            btn.setToolTip(_("Shortcut key: %s" % str(idx)))
-            label = QLabel("")
-            label.setAlignment(Qt.AlignCenter)
-            v.addWidget(label)
-            v.addWidget(btn)
-            answer_layout.addLayout(v)
+            answer_layout.addWidget(btn)
             self.revAnsBtns.append(btn)
-            self.revAnsLbls.append(label)
+
+        self.revAnsInfo = QLabel()
+        self.revAnsInfo.setAlignment(Qt.AlignCenter)
+        review_layout.addWidget(self.revAnsInfo)
+        review_layout.addWidget(self.revAns)
+
+        return revArea
 
         self.revAnsInfo = QLabel()
         self.revAnsInfo.setAlignment(Qt.AlignCenter)
@@ -215,134 +247,57 @@ class Previewer(QDialog):
 
         return revArea
 
-    def updateRevArea(self, c):
-        """Update review area of the previewer"""
 
-        sched = self.mw.col.sched
-        early = c.queue != 0 and sched.today < c.due  # not new, not due yet
-
-        ret = False
-        ahead = False
-        if c.queue in (-1, -2):  # buried or suspended
-            self.revAnsInfo.setText(
-                transl("Buried or suspended cards cannot be reviewed"))
-            self.revAnsInfo.show()
-            self.revAns.hide()
-            ret = True
-        elif early and c.queue == 2:  # early reviews
-            if self.config["rev"][1]:  # ahead of schedule enabled
-                self.revAnsInfo.setText(
-                    transl("Review Ahead of Schedule:"))
-                self.revAnsInfo.show()
-                self.revAns.show()
-                ahead = True
-            else:
-                self.revAnsInfo.setText(
-                    transl("Card is not due, yet"))
-                self.revAnsInfo.show()
-                self.revAns.hide()
-                ret = True
-        elif early and c.queue == 3:  # early day learning cards
-            self.revAnsInfo.setText(
-                transl("Day learning cards cannot be reviewed ahead"))
-            self.revAnsInfo.show()
-            self.revAns.hide()
-            ret = True
-        else:  # scheduled reviews, regular learning cards, and new cards
-            self.revAnsInfo.hide()
-            self.revAns.show()
-
-        if ret:
-            self.revArea.show()
-            return
-
-        # buttons and shortcuts
-
-        sched.revAnsEarly = ahead  # early review?
-        cnt = sched.answerButtons(c)
-        if cnt == 2:
-            answers = [_("Again"), _("Good"), None, None]
-        elif cnt == 3:
-            answers = [_("Again"), _("Good"), _("Easy"), None]
-        elif cnt == 4:
-            answers = [_("Again"), _("Hard"), _("Good"), _("Easy")]
-        ease = 0
-        for ans, btn, lbl in zip(answers, self.revAnsBtns, self.revAnsLbls):
-            ease += 1
-            if not ans:
-                btn.hide()
-                lbl.hide()
-                continue
-            btn.setText(ans)
-            btn.show()
-            if not self.mw.col.conf['estTimes']:  # answer times disabled
-                lbl.hide()
-                continue
-            ivl = sched.nextIvlStr(c, ease, True)
-            lbl.setText(ivl)
-            lbl.show()
-
-        sched.revAnsEarly = False  # reset review mode
-        self.revAhead = ahead  # save review mode for onPreviewAnswer
-
-        self.revArea.show()
-        self.revAnswers = answers
-        self._revTimer = time.time()
-
-    def onPreviewAnswer(self, ease):
+    def onPreviewAnswer(self, ease: int) -> None:
         """Answer card with given ease"""
+        c: Any = self.b.card
+        import types
+        import time
+        now: float = time.time() - 1.0
 
-        c = self.b.card
-        sched = self.mw.col.sched
-        answers = self.revAnswers
+        # Use Anki's day-based attributes for scheduler compatibility
+        # from anki.cards import Card  # Disabled: not available in Anki 25.x
+        today: int = self.mw.col.sched.today
 
-        # sanity checks, none of these should ever be triggered
-        if not c:  # no card
-            return
-        if sched.answerButtons(c) < ease:  # wrong ease
-            return
-        if c.queue in (-1, -2):  # suspended/buried
-            return
+        # Ensure all interval/count attributes are integers before calling scheduler
+        int_attrs = ["due", "ivl", "queue", "reps", "lapses", "factor", "odid", "odue", "left"]
+        for attr in int_attrs:
+            val = getattr(c, attr, None)
+            if val is not None and not isinstance(val, int):
+                try:
+                    setattr(c, attr, int(val))
+                except Exception:
+                    setattr(c, attr, 0)
 
-        # set queue attributes if not set
-        for attr in ("newCount", "revCount", "lrnCount"):
-            trySetAttribute(sched, attr, 1)
+        # Set review timing attributes to match Anki's expectations
+        for attr in ["_lastReviewed", "_reviewStart", "_startTimer"]:
+            setattr(c, attr, today)
 
-        for attr in ("_newQueue", "_lrnQueue", "_revQueue"):
-            trySetAttribute(sched, attr, [])
-
-        if c.queue == 0:  # new
-            if c.id not in sched._newQueue:
-                sched._newQueue.append(c.id)
-        elif c.queue in (1, 3):  # lrn
-            if c.id not in sched._lrnQueue:
-                sched._lrnQueue.append(c.id)
-        elif c.queue == 2:  # new
-            if c.id not in sched._revQueue:
-                sched._revQueue.append(c.id)
-
-        c.timerStarted = self._revTimer
-
-        print("==========================================")
-
-        sched.revAnsEarly = self.revAhead  # early review?
-        sched.answerCard(c, ease)
-
-        print("after review")
-        print("c.due", c.due)
-        print("c.ivl", c.ivl)
-        print("c.factor", c.factor)
-
-        # reset attributes:
-        sched.revAnsEarly = False
-        c.timerStarted = None
-        # save:
-        self.mw.autosave()
-        self.mw.requireReset()
-        self.b.model.reset()
-        tooltip(answers[ease - 1], period=2000)
-
-        if self.config["rev"][2]:  # automatically switch to next card
+        # Use Anki's built-in timer logic
+        c.start_timer()
+        # timeTaken must be a float, not a method
+        if getattr(c, "timeTaken", None) is None or callable(getattr(c, "timeTaken", None)):
+            # Use browser batch grading API for safety (like learn-now-button)
+            # from aqt.operations import CollectionOp  # Disabled: not available in Anki 25.x
+            selected_cid = self.b.selectedCards()[0] if self.b.selectedCards() else None
+            if not selected_cid:
+                tooltip("No card selected in browser.", period=3000)
+                return
+            ease_val = ease
+            def grade_card_op(col):
+                card = col.get_card(selected_cid)
+                card.start_timer()
+                col.sched.answerCard(card, ease_val)
+                return col.update_cards([card])
+            CollectionOp(
+                parent=self.b,
+                op=grade_card_op,
+            ).success(
+                lambda out: tooltip(self.revAnswers[ease - 1], period=2000)
+            ).run_in_background()
+            if self.config["rev"][2]:
+                self.b.onNextCard()
+        if self.config["rev"][2]:
             self.b.onNextCard()
 
     ############ REVIEWS END ############
@@ -363,55 +318,38 @@ class Previewer(QDialog):
             self.updateButtons()
             return
 
-        if cardChanged and not self.both:
+        # Always start with front side on initial preview
+        if not hasattr(self, '_initialPreviewed'):
+            self.state = "question"
+            self._initialPreviewed = True
+        elif cardChanged and not self.both:
             self.state = "question"
 
         if self.config["rev"][0]:
-            # only show review buttons on answer side:
-            if self.config["rev"][3] and self.state != "answer":
-                self.revArea.hide()
+            answers = [_("Again"), _("Hard"), _("Good"), _("Easy")]
+            self.revArea.show()
+            self.revAnswers = answers
+            self._revTimer = time.time()
+            if cids:
+                c = self.mw.col.getCard(cids[0])
+                # Set timerStarted on card when review area is shown
+                c.timerStarted = self._revTimer
+            for btn in self.revAnsBtns:
+                btn.setEnabled(True)
+                btn.setToolTip("Rate this card.")
+
+        # Always render the currently selected card in the browser
+        cids = self.b.selectedCards()
+        if cids:
+            c = self.mw.col.getCard(cids[0])
+            if self.state == "answer":
+                html = c.a()
             else:
-                self.updateRevArea(self.b.card)
+                html = c.q()
+            self.web.stdHtml(html)
 
-        if cids[0] in self.cards and not multiple_selected:
-            # moved focus to another previously selected card
-            oldfocus = cids[0]
-            cids = self.cards
-            nr = len(cids)
-            self.multi = nr > 1
-            if cardChanged:
-                # focus changed without any edits
-                if not self.linkClicked and self.multi:
-                    # only scroll when coming from browser and multiple cards shown
-                    self.scrollToCard(oldfocus)
-                self.linkClicked = False
-                return
-        elif multiple_selected:
-            self.multi = True
-        else:
-            self.multi = False
-
-        if nr >= 200:
-            q = ("Are you sure you want to preview <b>{} cards</b> at once? "
-                 "This might take a while to render".format(nr))
-            ret = askUser(q)
-            if not ret:
-                return False
-
-        html, css, js = self.renderCards(cids)
-
-        def ti(x): return x
-        base = getBase(self.mw.col)
-        if preview_jsbooster:
-            # JS Booster available
-            baseUrlText = getBaseUrlText(self.mw.col) + "__previewer__.html"
-            stdHtmlWithBaseUrl(self.web,
-                               ti(mungeQA(self.mw.col, html)), baseUrlText,
-                               css, head=base, js=browserSel + multi_preview_js)
-        else:
-            # fall back to default
-            self.web.stdHtml(
-                ti(mungeQA(self.mw.col, html)), css, head=base, js=js)
+        self.btnPrev.setEnabled(True)
+        self.btnNext.setEnabled(True)
 
         if oldfocus and self.multi:
             self.scrollToCard(oldfocus)
@@ -427,19 +365,46 @@ class Previewer(QDialog):
 
     def renderCards(self, cids):
         page = ""
-        css = self.mw.reviewer._styles() + preview_css
+        css = [preview_css]
         html = u"""<div id="{0}" class="card card{1}">{2}</div>"""
 
         # RegEx to remove multiple imports of external JS/CSS (JS-Booster-specific)
         jspattern = r"""(<script type=".*" src|<style>@import).*(</script>|</style>)"""
         scriptre = re.compile(jspattern)
-        js = browserSel
+        js = ""  # browserSel removed
 
         if self.multi:
             # only apply custom CSS and JS when previewing multiple cards
             html = u"""<div id="{0}" onclick="py.link('focus {0}');toggleActive(this);" \
                    class="card card{1}">{2}</div>"""
-            css += multi_preview_css
+            css += [multi_preview_css]
+            js += multi_preview_js
+
+        for idx, cid in enumerate(cids):
+            # add contents of each card to preview
+            c = self.mw.col.getCard(cid)
+            if self.state == "answer":
+                ctxt = c.a()
+            else:
+                ctxt = c.q()
+            # Remove subsequent imports of external JS/CSS
+            if idx >= 1:
+                ctxt = scriptre.sub("", ctxt)
+            page += html.format(cid, c.ord + 1, ctxt)
+
+        page = re.sub("\[\[type:[^]]+\]\]", "", page)
+        page = runFilter("previewerMungeQA", page)
+
+        return page, css, js
+        jspattern = r"""(<script type=".*" src|<style>@import).*(</script>|</style>)"""
+        scriptre = re.compile(jspattern)
+        js = ""  # browserSel removed
+
+        if self.multi:
+            # only apply custom CSS and JS when previewing multiple cards
+            html = u"""<div id="{0}" onclick="py.link('focus {0}');toggleActive(this);" \
+                   class="card card{1}">{2}</div>"""
+            css += [multi_preview_css]
             js += multi_preview_js
 
         for idx, cid in enumerate(cids):
@@ -500,78 +465,86 @@ class Previewer(QDialog):
             openLink(url)
 
     def onPrev(self):
+        from PyQt6.QtCore import QTimer
         if self.state == "answer" and not self.both:
             self.state = "question"
             self.renderPreview()
         else:
             self.b.onPreviousCard()
+            QTimer.singleShot(50, lambda: self.renderPreview(cardChanged=True))
         self.updateButtons()
 
     def onNext(self):
-        if self.state == "question":
-            self.state = "answer"
-            self.renderPreview()
-        else:
-            self.b.onNextCard()
+        from PyQt6.QtCore import QTimer
+        self.b.onNextCard()  # Move browser selection first
+        self.state = "question"
+        QTimer.singleShot(50, lambda: self.renderPreview(cardChanged=True))
         self.updateButtons()
 
-    def updateButtons(self):
-        """Toggle next/previous buttons"""
-        self.b._previewState = self.state
-        if self.multi:
-            self.btnPrev.setEnabled(False)
-            self.btnNext.setEnabled(False)
-            return
-        current = self.b.currentRow()
-        # improve the default behaviour of the previewer:
-        canBack = (current > 0 or (current == 0 and self.state == "answer"
-                                   and not self.both))
-        self.btnPrev.setEnabled(self.b.singleCard and canBack)
-        canForward = current < self.b.model.rowCount(None) - 1 or \
-            self.state == "question"
-        self.btnNext.setEnabled(self.b.singleCard and canForward)
-
-    def onSidesToggle(self):
-        """Switches between preview modes ('front' vs 'back and front')"""
-        self.both = self.btnSides.isChecked()
-        if self.both:
+    def onShowAnswer(self):
+        if self.state != "answer":
             self.state = "answer"
-        else:
-            self.state = "question"
-        self.b._renderPreview()
+            oldfocus = None
+            cids = self.b.selectedCards()  # Always fetch latest selection
+            nr = len(cids)
+            multiple_selected = nr > 1
 
-    def onMove(self, target):
-        """Move row selection to new target"""
-        if target == "s":
-            self.b.form.tableView.selectRow(0)
-        elif target == "e":
-            max = self.b.model.rowCount(None)
-            self.b.form.tableView.selectRow(max - 1)
-        elif target == "p":
-            self.b.onPreviousCard()
-        elif target == "n":
-            self.b.onNextCard()
+            if not cids:
+                txt = "Please select one or more cards"
+                self.web.stdHtml(txt)
+                self.updateButtons()
+                return
 
-    def scrollToCard(self, cid):
-        """Adjusts preview window scrolling position to show supplied card"""
-        self.web.eval("""
-            const elm = document.getElementById('%i');
-            const elmRect = elm.getBoundingClientRect();
-            const absElmTop = elmRect.top + window.pageYOffset;
-            const elmHeight = elmRect.top - elmRect.bottom
-            const middle = absElmTop - (window.innerHeight/2) - (elmHeight/2);
-            window.scrollTo(0, middle);
-            toggleActive(elm);
-            """ % cid)
-        self.card = self.b.card
+            # Always start with front side on initial preview
+            if not hasattr(self, '_initialPreviewed'):
+                self.state = "question"
+                self._initialPreviewed = True
+            # elif cardChanged and not self.both:
+            #     self.state = "question"  # Disabled: cardChanged not defined in this context
+
+            if self.config["rev"][0]:
+                answers = [_("Again"), _("Hard"), _("Good"), _("Easy")]
+                self.revArea.show()
+                self.revAnswers = answers
+                self._revTimer = time.time()
+                if cids:
+                    c = self.mw.col.getCard(cids[0])
+                    # Set timerStarted on card when review area is shown
+                    c.timerStarted = self._revTimer
+                for btn in self.revAnsBtns:
+                    btn.setEnabled(True)
+                    btn.setToolTip("Rate this card.")
+
+            # Always render the currently selected card in the browser
+            cids = self.b.selectedCards()  # Always fetch latest selection
+            if cids:
+                c = self.mw.col.getCard(cids[0])
+                if self.state == "answer":
+                    html = c.a()
+                else:
+                    html = c.q()
+                self.web.stdHtml(html)
+
+            self.btnPrev.setEnabled(True)
+            self.btnNext.setEnabled(True)
+
+            if oldfocus and self.multi:
+                self.scrollToCard(oldfocus)
+
+            self.cards = cids
+
+            self.updateButtons()
+
+            clearAudioQueue()
 
 
-def _renderPreviewWrapper(self, cardChanged=False):
-    if not self._previewWindow:
-        return
-    self._previewWindow.renderPreview(cardChanged)
+            # Always use the latest selected card for autoplay
+            if not self.multi and cids:
+                c = self.mw.col.getCard(cids[0])
+                if self.mw.reviewer.autoplay(c):
+                    playFromText(html)
 
-
+# The following functions should be outside the class, not indented under renderPreview
 def _openPreview(self):
     """Creates and launches the preview window"""
     pvw = Previewer(self)
@@ -580,7 +553,7 @@ def _openPreview(self):
         self.form.previewButton.setChecked(False)
         return
     pvw.show()
-    self._previewWindow = self._previewWindow = pvw
+    self._previewWindow = pvw
 
 
 def _onClosePreview(self):
@@ -606,8 +579,5 @@ def _refreshCurrentCard(self, note):
         self._previewWindow.renderPreview(False)
 
 
-Browser.onTogglePreview = wrap(Browser.onTogglePreview, onTogglePreview)
-Browser._openPreview = _openPreview
-Browser._onClosePreview = _onClosePreview
-Browser._renderPreview = _renderPreviewWrapper
-Browser.refreshCurrentCard = _refreshCurrentCard
+
+# For Anki 2.1+, use gui_hooks to patch browser methods

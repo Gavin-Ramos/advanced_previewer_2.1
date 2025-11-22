@@ -1,0 +1,112 @@
+
+==== onPreviewAnswer ===
+timerStarted: None
+timerStopped: None
+_lastReviewed: None
+_startTimer: None
+_reviewStart: None
+timeTaken: <bound method Card.time_taken of <anki.cards.Card object at 0x32bd374c0>>
+
+==== onPreviewAnswer ===
+timerStarted: 1763829072.450995
+timerStopped: 1763829072.450995
+_lastReviewed: 1763829072.450995
+_startTimer: 1763829072.450995
+_reviewStart: 1763829072.450995
+timeTaken: 0.0
+
+==== onPreviewAnswer ===
+timerStarted: 1763829197.2192771
+timerStopped: 1763829197.2192771
+_lastReviewed: 1763829197.2192771
+_startTimer: 1763829197.2192771
+_reviewStart: 1763829197.2192771
+timeTaken: 0.0
+
+==== onPreviewAnswer ===
+timerStarted: 1763829609.403012
+timerStopped: 1763829609.403012
+_lastReviewed: 1763829609.403012
+_startTimer: 1763829609.403012
+_reviewStart: 1763829609.403012
+timeTaken: 0.0
+
+==== onPreviewAnswer ===
+timerStarted: 1763829732.6627572
+timerStopped: 1763829733.663306
+_lastReviewed: 1763829732.6627572
+_startTimer: 1763829732.6627572
+_reviewStart: 1763829732.6627572
+timeTaken: 0.0
+
+==== onPreviewAnswer ===
+timerStarted: 1763829938.728323
+timerStopped: 1763829939.729321
+_lastReviewed: 1763829938.728323
+_startTimer: 1763829938.728323
+_reviewStart: 1763829938.728323
+timeTaken: 0.0
+
+==== onPreviewAnswer ===
+timerStarted: 1763830037.3374
+timerStopped: 1763830038.338281
+_lastReviewed: 1763830037.3374
+_startTimer: 1763830037.3374
+_reviewStart: 1763830037.3374
+timeTaken: 0.0
+
+==== onPreviewAnswer ===
+timerStarted: 1763830138.329473
+timerStopped: 1763830138.329473
+_lastReviewed: 1763830138.329473
+_startTimer: 1763830138.329473
+_reviewStart: 1763830138.329473
+timeTaken: 0.0
+
+==== onPreviewAnswer ===
+timerStarted: 1763830249.3921988
+timerStopped: 1763830249.3921988
+_lastReviewed: 1763830249.3921988
+_startTimer: 1763830249.3921988
+_reviewStart: 1763830249.3921988
+timeTaken: 0.0
+
+==== float attrs before answerCard ===
+_lastReviewed: 1763830249.3921988
+_reviewStart: 1763830249.3921988
+_startTimer: 1763830249.3921988
+timeTaken: 0.0
+timerStarted: 1763830249.3921988
+timerStopped: 1763830249.3921988
+
+==== onPreviewAnswer ===
+timerStarted: 1763830627.400285
+timerStopped: 1763830627.400285
+_lastReviewed: 1763830627.400285
+_startTimer: 1763830627.400285
+_reviewStart: 1763830627.400285
+timeTaken: 0.0
+
+==== float attrs before answerCard ===
+_lastReviewed: 1763830627.400285
+_reviewStart: 1763830627.400285
+_startTimer: 1763830627.400285
+timeTaken: 0.0
+timerStarted: 1763830627.400285
+timerStopped: 1763830627.400285
+
+==== onPreviewAnswer ===
+timerStarted: 1763830812.558485
+timerStopped: 1763830812.558485
+_lastReviewed: 1763830812.558485
+_startTimer: 1763830812.558485
+_reviewStart: 1763830812.558485
+timeTaken: 0.0
+
+==== float attrs before answerCard ===
+_lastReviewed: 1763830812.558485
+_reviewStart: 1763830812.558485
+_startTimer: 1763830812.558485
+timeTaken: 0.0
+timerStarted: 1763830812.558485
+timerStopped: 1763830812.558485

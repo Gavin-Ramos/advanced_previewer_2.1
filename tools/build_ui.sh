@@ -24,7 +24,7 @@ for i in designer/*.ui; do
     base="${name%.*}"
     echo "Generating $base"
     out="$form_dir/${base}.py"
-    pyuic4 "$i" -o "$out"
+    pyuic5 "$i" -o "$out"
 done
 
 echo "Done."

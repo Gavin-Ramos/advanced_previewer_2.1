@@ -9,7 +9,8 @@ Copyright: Glutanimate 2016-2017
 License: GNU AGPL, version 3 or later; https://www.gnu.org/licenses/agpl-3.0.en.html
 """
 
-from aqt.qt import *
+
+from PyQt6.QtWidgets import QDialog, QDialogButtonBox
 from aqt import mw
 
 from .forms import settings
@@ -23,9 +24,10 @@ default_prefs = {
 }
 
 
+
 def loadConfig():
     """Load and/or create add-on prefs"""
-    prefs = mw.pm.profile
+    prefs = mw.pm.meta
     default = default_prefs
     if 'advprev' not in prefs:
         # create initial prefs
@@ -42,7 +44,7 @@ def loadConfig():
         prefs['advprev']['nxt'] = default_prefs["rev"]
         mw.pm.save()
 
-    return mw.pm.profile['advprev']
+    return mw.pm.meta['advprev']
 
 
 class AdvPrevOptions(QDialog):
