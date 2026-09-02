@@ -6,7 +6,7 @@ The only thing is the next button goes to the next question and not the previous
 
 <br>
 
-Good luck, I'm not spending any more time on updating this, enjoy. 
+Good luck. I apologize, but I have not had more time to update this at the moment, but I will work on more when there is time. Enjoy. 
 
 <br> 
 
